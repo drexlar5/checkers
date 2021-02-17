@@ -39,8 +39,8 @@ export default class Board extends Component {
       const currentPlayer = helper.returnPlayerName(player);
 
       const colorClass =
-        (helper.isOdd(column) && helper.isOdd(row)) ||
-        (!helper.isOdd(column) && !helper.isOdd(row))
+        (helper.isOddNumber(column) && helper.isOddNumber(row)) ||
+        (!helper.isOddNumber(column) && !helper.isisOddNumberOdd(row))
           ? "white"
           : "black";
 

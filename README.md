@@ -13,7 +13,6 @@ YARN version - v1.22.10
 **This application uses the following technologies:**
 
 - ReactJs
-- jest
 
 **Install all dependencies**
 

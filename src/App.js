@@ -1,7 +1,12 @@
+/* -------------------------------------------------------------------------- */
+/*                              External imports                              */
+/* -------------------------------------------------------------------------- */
 import { Component } from "react";
 import styled from "styled-components";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
+
+/* ---------------------------- Internal imports ---------------------------- */
 import { returnPlayerName } from "./helpers";
 import Board from "./Board";
 import { Checkers } from "./Checkers";
@@ -39,15 +44,16 @@ class App extends Component {
   }
 
   setColumns() {
-    const columns = {};
-    columns.a = 0;
-    columns.b = 1;
-    columns.c = 2;
-    columns.d = 3;
-    columns.e = 4;
-    columns.f = 5;
-    columns.g = 6;
-    columns.h = 7;
+    const columns = {
+      a: 0,
+      b: 1,
+      c: 2,
+      d: 3,
+      e: 4,
+      f: 5,
+      g: 6,
+      h: 7,
+    };
 
     return columns;
   }
@@ -102,8 +108,8 @@ class App extends Component {
 
     let self = this;
 
-    player1.map((elem) => (board[elem] = self.createPiece(elem, "player1")));
-    player2.map((elem) => (board[elem] = self.createPiece(elem, "player2")));
+    player1.map((piece) => (board[piece] = self.createPiece(piece, "player1")));
+    player2.map((piece) => (board[piece] = self.createPiece(piece, "player2")));
 
     return board;
   }
@@ -150,7 +156,7 @@ class App extends Component {
       }
 
       // disable moving of new piece if player has already jumped
-      if (this.state.hasJumped !== null && boardState[coordinates] !== null)
+      if (this.state.hasJumped != null && boardState[coordinates] != null)
         return;
 
       // set active piece
@@ -171,14 +177,12 @@ class App extends Component {
     }
 
     // Clicked on an empty square
-    if (this.state.activePiece === null) {
-      return;
-    }
+    if (this.state.activePiece == null) return;
 
     if (this.state.moves.length > 0) {
       const postMoveState = this.Checkers.movePiece(coordinates, this.state);
 
-      if (postMoveState === null) return;
+      if (postMoveState == null) return;
 
       this.updateStatePostMove(postMoveState);
     }
@@ -242,7 +246,7 @@ class App extends Component {
         gameStatus = "No moves left - Player Two Wins!";
         break;
       default:
-        gameStatus = currentPlayer === true ? "Player One" : "Player Two";
+        gameStatus = currentPlayer ? "Player One" : "Player Two";
         break;
     }
 
@@ -260,7 +264,7 @@ class App extends Component {
               onClick={(coordinates) => this.handleClick(coordinates)}
             />
           </div>
-          <div className="time-travel">
+          <div className="history">
             <button
               className={undoClass}
               onClick={() =>
@@ -307,7 +311,7 @@ const Wrapper = styled.div`
     margin: 0 auto;
   }
 
-  .time-travel {
+  .history {
     max-width: 660px;
     display: block;
     margin: 0 auto;

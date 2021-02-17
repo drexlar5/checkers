@@ -1,4 +1,4 @@
-export const isOdd = (number) => Math.abs(number % 2) === 1;
+export const isOddNumber = (number) => Math.abs(number % 2) === 1;
 
 export const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value);

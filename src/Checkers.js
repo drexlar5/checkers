@@ -57,7 +57,7 @@ export class Checkers {
 
       if (!isKing && cornerCoordinates.indexOf(advanceRow) < 0) continue;
 
-      if (boardState[cornerCoordinates] === null) {
+      if (boardState[cornerCoordinates] == null) {
         moves.push(cornerCoordinates);
       } else {
         let neighborPiece = boardState[cornerCoordinates];
@@ -127,7 +127,7 @@ export class Checkers {
     return null;
   };
 
-  shouldBeKing = (movingPiece, coordinates) => {
+  shouldPieceBeKing = (movingPiece, coordinates) => {
     if (movingPiece.isKing) return false;
 
     const row = helper.getRowAsInteger(coordinates);
@@ -156,7 +156,8 @@ export class Checkers {
     if (moves.indexOf(coordinates) < 0 && jumpArray.indexOf(coordinates) < 0)
       return null;
 
-    if (this.shouldBeKing(movingPiece, coordinates)) movingPiece.isKing = true;
+    if (this.shouldPieceBeKing(movingPiece, coordinates))
+      movingPiece.isKing = true;
 
     // Move piece to new coordinates
     boardState[activePiece] = null;
