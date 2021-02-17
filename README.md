@@ -6,8 +6,6 @@ A simple game of checkers between two players.
 
 **Environments**
 
-Node version - v12.18.3 (LTS)
-
 YARN version - v1.22.10
 
 **This application uses the following technologies:**
