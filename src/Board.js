@@ -40,7 +40,7 @@ export default class Board extends Component {
 
       const colorClass =
         (helper.isOddNumber(column) && helper.isOddNumber(row)) ||
-        (!helper.isOddNumber(column) && !helper.isisOddNumberOdd(row))
+        (!helper.isOddNumber(column) && !helper.isOddNumber(row))
           ? "white"
           : "black";
 
